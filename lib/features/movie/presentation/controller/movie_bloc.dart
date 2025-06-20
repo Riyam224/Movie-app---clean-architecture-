@@ -35,7 +35,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getTopRatedMoviesUsecase.excute();
+    final result = await getTopRatedMoviesUsecase();
     result.fold(
       (failure) {
         emit(
@@ -64,7 +64,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getPopularMoviesUsecase.excute();
+    final result = await getPopularMoviesUsecase();
     result.fold(
       (failure) {
         emit(
@@ -93,7 +93,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getNowPlayingMoviesUsecase.excute();
+    final result = await getNowPlayingMoviesUsecase();
     result.fold(
       (failure) {
         emit(
