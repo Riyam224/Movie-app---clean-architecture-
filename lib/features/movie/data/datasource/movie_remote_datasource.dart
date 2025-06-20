@@ -1,0 +1,55 @@
+import 'package:clean_arch_movie_app/core/utils/constants.dart';
+import 'package:clean_arch_movie_app/core/err/exception.dart';
+import 'package:clean_arch_movie_app/core/networks/error_handler_message_model.dart';
+import 'package:clean_arch_movie_app/features/movie/data/models/movie_model.dart';
+import 'package:dio/dio.dart';
+
+abstract class BaseMovieRemoteDatasource {
+  Future<List<MovieModel>> getNowPlayingMovies();
+  Future<List<MovieModel>> getPopularMovies();
+  Future<List<MovieModel>> getTopRatedMovies();
+}
+
+class MovieRemoteDatasource extends BaseMovieRemoteDatasource {
+  @override
+  Future<List<MovieModel>> getNowPlayingMovies() async {
+    // todo
+    final response = await Dio().get(AppConstants.nowPlayingMovies);
+
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
+      );
+    } else {
+      throw ServerException(ErrorHandlerMessageModel.fromJson(response.data));
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getPopularMovies() async {
+    // todo
+    final response = await Dio().get(AppConstants.popularMovies);
+
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
+      );
+    } else {
+      throw ServerException(ErrorHandlerMessageModel.fromJson(response.data));
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getTopRatedMovies() async {
+    // todo
+    final response = await Dio().get(AppConstants.topRatedMovies);
+
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
+      );
+    } else {
+      throw ServerException(ErrorHandlerMessageModel.fromJson(response.data));
+    }
+  }
+}
