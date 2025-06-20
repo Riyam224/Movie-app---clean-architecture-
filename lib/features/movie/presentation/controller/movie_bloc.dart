@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'dart:async';
+import 'package:clean_arch_movie_app/core/usecases/base_usecase.dart';
 import 'package:clean_arch_movie_app/core/utils/enum.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_now_playing_movies_usecase.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_popular_movies_usecase.dart';
@@ -35,7 +36,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getTopRatedMoviesUsecase();
+    final result = await getTopRatedMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         emit(
@@ -64,7 +65,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getPopularMoviesUsecase();
+    final result = await getPopularMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         emit(
@@ -93,7 +94,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
       ),
     );
 
-    final result = await getNowPlayingMoviesUsecase();
+    final result = await getNowPlayingMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         emit(
