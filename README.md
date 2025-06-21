@@ -2,7 +2,7 @@ Got it! Since you **don’t want to include screenshots**, I’ve cleaned up the
 
 ---
 
-### ✅ Final `README.md` (no screenshots):
+### ✅ Final `README.md`
 
 ```markdown
 # 🎬 Clean Architecture Movie App
@@ -34,27 +34,31 @@ This project follows the **Clean Architecture** principle with a clear separatio
 ```
 
 lib/
-├── core/
-│   ├── err/             # Error handling
-│   ├── networks/        # API setup, interceptors
-│   ├── services/        # General services (e.g., helpers)
-│   ├── usecases/        # Shared base use cases (optional)
-│   └── utils/           # Constants, enums, formatters
+├── core/ # Common utilities
+│ ├── err/ # Error handling
+│ ├── networks/ # API configuration
+│ ├── services/ # Shared services/helpers
+│ ├── usecases/ # Base use cases (if any)
+│ └── utils/ # Enums, constants, formatters, etc.
+│
 ├── features/
-│   └── movie/
-│       ├── data/
-│       │   ├── datasource/
-│       │   ├── models/
-│       │   └── repository/
-│       ├── domain/
-│       │   ├── entities/
-│       │   ├── repository/
-│       │   └── usecases/
-│       └── presentation/
-│           ├── controller/   # Cubit/BLoC classes
-│           ├── views/        # Screens
-│           └── widgets/      # Reusable UI widgets
-├── main.dart
+│ └── movie/
+│ ├── data/ # Data Layer
+│ │ ├── datasource/ # Remote/local data source logic
+│ │ ├── models/ # DTOs and models
+│ │ └── repository/ # Implementation of domain repositories
+│
+│ ├── domain/ # Domain Layer
+│ │ ├── entities/ # Business models
+│ │ ├── repository/ # Abstract repositories
+│ │ └── usecases/ # Application-specific business logic
+│
+│ └── presentation/ # Presentation Layer
+│ ├── controller/ # Cubits or BLoCs
+│ ├── views/ # Screens
+│ └── widgets/ # Reusable UI components
+│
+├── main.dart # Entry point and DI init
 
 ````
 
@@ -73,8 +77,8 @@ lib/
 1. **Clone the repo:**
 
 ```bash
-git clone https://github.com/yourusername/clean_arch_movie_app.git
-cd clean_arch_movie_app
+git clone https://github.com/Riyam224/Movie-app---clean-architecture-
+cd Movie-app---clean-architecture-
 ````
 
 2. **Install dependencies:**
