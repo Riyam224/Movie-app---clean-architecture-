@@ -33,31 +33,29 @@ This project follows the **Clean Architecture** principle with a clear separatio
 
 ```
 lib/
-├── core/ # Common utilities
+├── core/
 │ ├── err/ # Error handling
-│ ├── networks/ # API configuration and clients
-│ ├── services/ # Shared services/helpers
-│ ├── usecases/ # Base use cases (optional)
-│ └── utils/ # Enums, constants, formatters, etc.
-
+│ ├── networks/ # API setup, interceptors
+│ ├── services/ # General services (e.g., helpers)
+│ ├── usecases/ # Shared base use cases (optional)
+│ └── utils/ # Constants, enums, formatters
 ├── features/
 │ └── movie/
-│ ├── data/ # Data Layer
-│ │ ├── datasource/ # Remote/local data source logic
-│ │ ├── models/ # DTOs and models
-│ │ └── repository/ # Implementation of domain repositories
-│
-│ ├── domain/ # Domain Layer
-│ │ ├── entities/ # Business models
-│ │ ├── repository/ # Abstract repository interfaces
-│ │ └── usecases/ # Application-specific business logic
-│
-│ └── presentation/ # Presentation Layer
-│ ├── controller/ # Cubits or BLoCs
+│ ├── data/
+│ │ ├── datasource/
+│ │ ├── models/
+│ │ └── repository/
+│ ├── domain/
+│ │ ├── entities/
+│ │ ├── repository/
+│ │ └── usecases/
+│ └── presentation/
+│ ├── controller/ # Cubit/BLoC classes
 │ ├── views/ # Screens
-│ └── widgets/ # Reusable UI components
+│ └── widgets/ # Reusable UI widgets
+├── main.dart
 
-├── main.dart # App entry point and dependency injection
+
 
 ````
 
