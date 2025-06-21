@@ -1,10 +1,13 @@
 import 'package:clean_arch_movie_app/features/movie/data/datasource/movie_remote_datasource.dart';
 import 'package:clean_arch_movie_app/features/movie/data/repository/movie_repository.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/repository/base_movie_repository.dart';
+import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_movie_details_usecase.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_now_playing_movies_usecase.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_popular_movies_usecase.dart';
+import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_recommendation_usecase.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_top_rated_movies_usecase.dart';
 import 'package:clean_arch_movie_app/features/movie/presentation/controller/movie_bloc.dart';
+import 'package:clean_arch_movie_app/features/movie/presentation/controller/movie_details_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 // todo access it globally
@@ -15,10 +18,16 @@ class ServicesLocator {
     // todo bloc
 
     sl.registerFactory(() => MovieBloc(sl(), sl(), sl()));
+    // ____
+    sl.registerFactory(() => MovieDetailsBloc(sl(), sl()));
     // todo usecases
     sl.registerSingleton(() => GetNowPlayingMoviesUsecase(sl()));
     sl.registerSingleton(() => GetPopularMoviesUsecase(sl()));
     sl.registerSingleton(() => GetTopRatedMoviesUsecase(sl()));
+    // ____
+    sl.registerSingleton(() => GetMovieDetailsUsecase(sl()));
+    sl.registerSingleton(() => GetRecommendation(sl()));
+
     // todo repository
 
     sl.registerLazySingleton<BaseMovieRepository>(

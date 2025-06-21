@@ -11,8 +11,8 @@ class AppConstants {
   static String movieDetails(int movieId) =>
       "$baseUrl/movie/$movieId?api_key=$appName";
 
-  // static const String movieRecommendations =
-  //     "$baseUrl/movie/{movie_id}/recommendations?api_key=$appName";
+  static String movieRecommendations(int movieId) =>
+      "$baseUrl/movie/$movieId/recommendations?api_key=$appName";
 
   static const String baseImageUrl = "https://image.tmdb.org/t/p/w500";
 

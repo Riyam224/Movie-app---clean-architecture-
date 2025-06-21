@@ -3,8 +3,10 @@ import 'package:clean_arch_movie_app/core/err/failure_abstract_class.dart';
 import 'package:clean_arch_movie_app/features/movie/data/datasource/movie_remote_datasource.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/entities/movie.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/entities/movie_details.dart';
+import 'package:clean_arch_movie_app/features/movie/domain/entities/recommendation.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/repository/base_movie_repository.dart';
 import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_movie_details_usecase.dart';
+import 'package:clean_arch_movie_app/features/movie/domain/usecases/get_recommendation_usecase.dart';
 import 'package:dartz/dartz.dart';
 
 class MovieRepository extends BaseMovieRepository {
@@ -69,6 +71,27 @@ class MovieRepository extends BaseMovieRepository {
     MovieDetailsParameters parameters,
   ) async {
     final result = await baseMovieRemoteDatasource.getMovieDetails(parameters);
+
+    try {
+      return Right(result);
+    } on ServerException catch (failure) {
+      return Left(
+        ServerFailure(
+          failure.errorHandlerMessageModel!.statusMessage,
+          message: 'Server Failure',
+        ),
+      );
+    }
+  }
+
+  // todo impl in reposi in data
+  @override
+  Future<Either<Failure, List<Recommendation>>> getRecommendation(
+    RecommendationParameters parameters,
+  ) async {
+    final result = await baseMovieRemoteDatasource.getRecommendation(
+      parameters,
+    );
 
     try {
       return Right(result);

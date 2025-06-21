@@ -7,6 +7,7 @@ import 'package:clean_arch_movie_app/core/utils/constants.dart';
 import 'package:clean_arch_movie_app/core/utils/enum.dart';
 import 'package:clean_arch_movie_app/features/movie/presentation/controller/movie_bloc.dart';
 import 'package:clean_arch_movie_app/features/movie/presentation/controller/movie_state.dart';
+import 'package:clean_arch_movie_app/features/movie/presentation/views/movie_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +42,13 @@ class NowPlayingComponent extends StatelessWidget {
                     key: const Key('openMovieMinimalDetail'),
                     onTap: () {
                       /// TODO : NAVIGATE TO MOVIE DETAILS
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailScreen(id: item.id),
+                        ),
+                      );
                     },
                     child: Stack(
                       children: [
