@@ -29,18 +29,17 @@ This project follows the **Clean Architecture** principle with a clear separatio
 - **Domain Layer**: Entities, Use Cases, Repositories (abstract)
 - **Presentation Layer**: Controllers (BLoC/Cubit), Views, Widgets
 
-### 📁 Folder Structure
+## 📁 Project Structure
 
 ```
-
 lib/
 ├── core/ # Common utilities
 │ ├── err/ # Error handling
-│ ├── networks/ # API configuration
+│ ├── networks/ # API configuration and clients
 │ ├── services/ # Shared services/helpers
-│ ├── usecases/ # Base use cases (if any)
+│ ├── usecases/ # Base use cases (optional)
 │ └── utils/ # Enums, constants, formatters, etc.
-│
+
 ├── features/
 │ └── movie/
 │ ├── data/ # Data Layer
@@ -50,15 +49,15 @@ lib/
 │
 │ ├── domain/ # Domain Layer
 │ │ ├── entities/ # Business models
-│ │ ├── repository/ # Abstract repositories
+│ │ ├── repository/ # Abstract repository interfaces
 │ │ └── usecases/ # Application-specific business logic
 │
 │ └── presentation/ # Presentation Layer
 │ ├── controller/ # Cubits or BLoCs
 │ ├── views/ # Screens
 │ └── widgets/ # Reusable UI components
-│
-├── main.dart # Entry point and DI init
+
+├── main.dart # App entry point and dependency injection
 
 ````
 
